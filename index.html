@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Data Center Interativo</title>
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:#0f172a;
+      color:#e5e7eb;
+    }
+    header{
+      background:#020617;
+      padding:20px;
+      text-align:center;
+      box-shadow:0 0 20px #38bdf8;
+    }
+    header h1{
+      color:#38bdf8;
+    }
+    nav{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+      margin:20px;
+    }
+    nav button{
+      background:#020617;
+      color:#38bdf8;
+      border:1px solid #38bdf8;
+      padding:10px 15px;
+      border-radius:8px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    nav button:hover{
+      background:#38bdf8;
+      color:#020617;
+    }
+    section{
+      display:none;
+      max-width:900px;
+      margin:20px auto;
+      padding:20px;
+      background:#020617;
+      border-radius:12px;
+      box-shadow:0 0 15px rgba(56,189,248,0.3);
+    }
+    section.active{
+      display:block;
+    }
+    h2{
+      color:#38bdf8;
+      border-bottom:1px solid #38bdf8;
+      padding-bottom:5px;
+    }
+    .simulacao{
+      margin-top:20px;
+      padding:15px;
+      border:1px dashed #38bdf8;
+      border-radius:10px;
+    }
+    .barra{
+      height:20px;
+      width:100%;
+      background:#1e293b;
+      border-radius:10px;
+      overflow:hidden;
+      margin-top:10px;
+    }
+    .nivel{
+      height:100%;
+      width:20%;
+      background:linear-gradient(90deg,#22c55e,#eab308,#ef4444);
+      transition:0.5s;
+    }
+    footer{
+      text-align:center;
+      padding:15px;
+      color:#94a3b8;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Data Center Interativo</h1>
+  <p>Aprenda sobre calor, refrigeração e energia de forma visual</p>
+</header>
+
+<nav>
+  <button onclick="mostrar('intro')">Introdução</button>
+  <button onclick="mostrar('fontes')">Fontes de Calor</button>
+  <button onclick="mostrar('distribuicao')">Distribuição Térmica</button>
+  <button onclick="mostrar('impacto')">Impacto do Calor</button>
+  <button onclick="mostrar('gestao')">Gestão Térmica</button>
+  <button onclick="mostrar('ups')">UPS</button>
+  <button onclick="mostrar('joule')">Efeito Joule</button>
+  <button onclick="mostrar('conceito')">Conceito de Data Center</button>
+</nav>
+
+<section id="intro" class="active">
+  <img src="descarregar.png" alt="Data Center" style="width:100%;max-height:300px;object-fit:cover;border-radius:10px;margin-bottom:15px;box-shadow:0 0 15px rgba(56,189,248,0.4);">
+  <h2>Introdução</h2>
+  <p>Os data centers funcionam de forma contínua para armazenar, processar e transmitir grandes quantidades de dados. Durante esse funcionamento, os equipamentos convertem energia elétrica em energia térmica, o que provoca a geração constante de calor. Esse fenómeno é inevitável, porém o seu controlo é fundamental para garantir o bom desempenho, a segurança e a durabilidade dos equipamentos.</p>
+</section>
+
+<section id="fontes">
+  <h2>Fontes de calor em data centers</h2>
+  <p>As principais fontes de calor em um data center são os servidores e racks de alta densidade, que produzem grande quantidade de calor devido ao intenso processamento de dados, especialmente os servidores blade. Equipamentos de rede como switches, routers e firewalls funcionam continuamente, contribuindo para o aumento da temperatura. Sistemas de alimentação elétrica como UPS, geradores e transformadores também geram calor durante a operação.</p>
+  <div class="simulacao">
+    <strong>Simulação:</strong> aumento de calor conforme mais equipamentos são ligados
+    <div class="barra"><div id="calor1" class="nivel"></div></div>
+    <button onclick="aumentar('calor1')">Ligar mais equipamentos</button>
+  </div>
+</section>
+
+<section id="distribuicao">
+  <h2>Distribuição térmica e pontos quentes</h2>
+  <p>O calor dentro de um data center não se distribui de forma uniforme. Áreas com alta concentração de equipamentos geram pontos quentes, ultrapassando os limites de temperatura recomendados. A disposição dos racks, corredores frios e quentes e o fluxo de ar influenciam diretamente essa distribuição.</p>
+</section>
+
+<section id="impacto">
+  <h2>Impacto do calor nos equipamentos</h2>
+  <p>O excesso de calor reduz a vida útil de CPUs, memórias RAM e discos rígidos, aumenta falhas em sistemas de armazenamento e redes e pode forçar os equipamentos a operar em modo de segurança. Além disso, os sistemas de refrigeração consomem mais energia para compensar o calor acumulado.</p>
+  <div class="simulacao">
+    <strong>Simulação:</strong> impacto do calor no desempenho
+    <div class="barra"><div id="calor2" class="nivel"></div></div>
+    <button onclick="aumentar('calor2')">Aumentar temperatura</button>
+  </div>
+</section>
+
+<section id="gestao">
+  <h2>Estratégias de gestão térmica</h2>
+  <p>Entre as estratégias utilizadas estão os corredores frios e quentes, sensores distribuídos de temperatura e humidade, sistemas de refrigeração escaláveis e manutenção preventiva. Essas práticas garantem eficiência energética, segurança dos dados e alta disponibilidade dos serviços.</p>
+</section>
+
+<section id="ups">
+  <h2>O que é UPS</h2>
+  <p>UPS (Uninterruptible Power Supply) é um dispositivo que fornece energia elétrica de reserva em caso de falha ou instabilidade da rede, garantindo operação contínua dos equipamentos e proteção dos dados.</p>
+</section>
+
+<section id="joule">
+  <h2>Transformação de energia elétrica em térmica (Efeito Joule)</h2>
+  <p>Quando a corrente elétrica passa por um condutor, existe resistência no material. Os elétrons colidem com os átomos, fazendo-os vibrar. Essa vibração gera calor. Esse processo é conhecido como Efeito Joule.</p>
+</section>
+
+<section id="conceito">
+  <h2>Conceito e Funcionamento de um Data Center</h2>
+  <p>Um data center é uma instalação física projetada para alojar sistemas computacionais críticos responsáveis pelo processamento, armazenamento e distribuição de dados digitais. Trata-se de uma infraestrutura complexa que integra servidores de alto desempenho, sistemas elétricos redundantes, redes de comunicação, mecanismos de segurança e sistemas avançados de refrigeração.</p>
+  <p>O funcionamento é contínuo, 24 horas por dia, exigindo elevada fiabilidade, controlo ambiental rigoroso e gestão de riscos como falhas elétricas e sobreaquecimento. Os principais componentes incluem servidores, sistemas de armazenamento, infraestruturas de rede, sistemas elétricos como UPS e geradores, e sistemas de refrigeração.</p>
+  <p>A organização física utiliza racks e corredores frios e quentes para melhorar o fluxo de ar e a eficiência térmica. O controlo térmico envolve a gestão da temperatura e da humidade, com sensores que permitem ajustes automáticos. Os data centers são infraestruturas críticas, essenciais para serviços modernos como finanças, saúde, educação e computação em nuvem.</p>
+</section>
+
+<footer>
+  <p>Projeto • física</p>
+</footer>
+
+<script>
+  function mostrar(id){
+    document.querySelectorAll('section').forEach(sec=>sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function aumentar(id){
+    const el = document.getElementById(id);
+    let atual = parseInt(el.style.width) || 20;
+    if(atual < 100){
+      el.style.width = (atual + 15) + '%';
+    }
+  }
+</script>
+
+</body>
+</html>
